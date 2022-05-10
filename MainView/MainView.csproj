@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\ActivitySelectorViewIcon.png" />
+    <None Remove="Images\EquipmentSelectorIcon.jpg" />
+    <None Remove="Images\HeaderImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\ActivitySelectorViewIcon.png" />
+    <Resource Include="Images\EquipmentSelectorIcon.jpg" />
+    <Resource Include="Images\HeaderImage.png" />
+  </ItemGroup>
+
+</Project>

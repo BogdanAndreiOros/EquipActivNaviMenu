@@ -5,10 +5,10 @@ namespace MainView.Models
 {
     public class Activity : ICategory
     {
-        private UniqueId id;
+        private UniqueId? id;
         private string name;
         private DateOnly createdOn;
-        private string createdBy;
+        private string? createdBy;
         private DateOnly lastModifiedOn;
 
         public UniqueId Id { get => id; set => id = value; }

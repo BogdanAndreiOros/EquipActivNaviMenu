@@ -24,5 +24,13 @@ namespace MainView.Models
         public DateOnly CreatedOn { get => createdOn; set => createdOn = value; }
         public string CreatedBy { get => createdBy; set => createdBy = value; }
         public DateOnly LastModifiedOn { get => lastModifiedOn; set => lastModifiedOn = value; }
+
+        public Equipment()
+        {
+            this.createdOn = DateOnly.MaxValue;
+            this.quantity = 0;
+            this.createdBy = "new";
+            this.lastModifiedOn = DateOnly.MinValue;
+        }
     }
 }

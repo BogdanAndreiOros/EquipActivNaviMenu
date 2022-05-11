@@ -6,19 +6,24 @@
              xmlns:local="clr-namespace:MainView.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-        <ListView>
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/Images/ActivitySelectorViewIcon.png" 
+
+    <ListView FontWeight="Bold">
+        <Button Background="White" BorderBrush="White" Width="220" Command="{Binding selectorViewModel.SwitchTableToActivitiesCommand}">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/ActivitySelectorViewIcon.png" 
                        Margin=" 10 10 0 10" Width="40" Height="40"/>
-                <TextBlock FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center">Activities</TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center">Activities</TextBlock>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button  Background="White" BorderBrush="White"  Width="220" Command="{Binding selectorViewModel.SwitchTableToEquipmentCommand}">
+            <StackPanel Orientation="Horizontal" Margin="0 0 5 0">
                 <Image Source="/Images/EquipmentSelectorIcon.jpg" 
                        Margin=" 10 10 0 10" Width="40" Height="40"/>
                 <TextBlock FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center">Equipment</TextBlock>
             </StackPanel>
-        </ListView>
+        </Button>
+    </ListView>
 
-    
 </UserControl>

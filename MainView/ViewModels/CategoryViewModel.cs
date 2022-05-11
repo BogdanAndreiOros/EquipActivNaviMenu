@@ -3,18 +3,21 @@ using MainView.Models;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using MainView.Commands;
+using System.Text;
+using System.Windows;
 
 namespace MainView.ViewModels
 {
     public class CategoryViewModel : ViewModelBase
     {
+
+        public CategorySelectorViewModel selectorViewModel { get; }
         private readonly IDataProvider categoryDataProvider;
+        public DelegateCommand AddCommand { get; }
 
-        public CategoryViewModel(IDataProvider dataProvider)
-        {
-            categoryDataProvider = dataProvider;
-        }
 
+        public string BoxText { get; set; } = new string("this is the initial text");
         public ObservableCollection<ICategory> CategoryItems { get; set; } = new();
         public IEnumerable<ICategory> MockCategoryItems { get; set; } = new List<Equipment>
             {
@@ -37,6 +40,13 @@ namespace MainView.ViewModels
                                Id = new System.Xml.UniqueId(), Name = "Basketball", Quantity = 52, Type = Type.BallSports }
             };
 
+        public CategoryViewModel(IDataProvider dataProvider)
+        {
+            selectorViewModel = new CategorySelectorViewModel();
+            categoryDataProvider = dataProvider;
+
+            AddCommand = new DelegateCommand(Add);
+        }
         public override void GetCategoryItems()
         {
 
@@ -48,6 +58,21 @@ namespace MainView.ViewModels
             if (items is not null)
                 foreach (var item in items)
                     CategoryItems.Add(item);
+        }
+
+        private void Add(object? parameter)
+        {
+            BoxText = "Updated in the command";
+            MessageBox.Show("Command Works");
+            MessageBox.Show(BoxText);
+
+            /* var item = parameter as ICategory;
+             CategoryItems.Add(item);*/
+           /* MockCategoryItems = MockCategoryItems.Append(new Equipment());
+            MockCategoryItems = MockCategoryItems.Append(new Equipment());
+            MockCategoryItems = MockCategoryItems.Append(new Equipment());
+            MockCategoryItems = MockCategoryItems.Append(new Equipment());*/
+
         }
     }
 }

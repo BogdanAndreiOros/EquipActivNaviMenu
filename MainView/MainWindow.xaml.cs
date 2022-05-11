@@ -8,6 +8,7 @@ namespace MainView
     public partial class MainWindow : Window
     {
         private readonly CategoryViewModel viewModel;
+        private readonly CategorySelectorViewModel viewModelSelector;
 
         public MainWindow()
         {

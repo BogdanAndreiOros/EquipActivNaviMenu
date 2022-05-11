@@ -14,11 +14,11 @@
             <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Content="Add new entry" 
+        <Button Grid.Row="0" Content="Add new entry" Command="{Binding AddCommand}"
                 Height="20" Width="90" HorizontalAlignment="Right" Margin="0 0 10 0"/>
 
-        <DataGrid Grid.Row="1" ItemsSource="{Binding CategoryItems}"/>
-
+        <DataGrid Grid.Row="1" ItemsSource="{Binding MockCategoryItems, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+        <TextBox Grid.Row="0" Width="100" Text="{Binding BoxText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
     </Grid>
     
 </UserControl>

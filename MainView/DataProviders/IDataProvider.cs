@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace MainView.DataProviders
 {
-    public interface IDataProvider
+    public interface IDataProvider<T> where T : class
     {
-        IEnumerable<ICategory> GetMockData();
+        IEnumerable<T> GetMockData();
     }
 }

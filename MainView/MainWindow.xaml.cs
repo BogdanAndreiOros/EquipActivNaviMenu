@@ -13,7 +13,7 @@ namespace MainView
         public MainWindow()
         {
             InitializeComponent();
-            viewModel = new CategoryViewModel(new ActivityDataProvider());
+            viewModel = new CategoryViewModel(new ActivityDataProvider(), new EquipmentDataProvider());
             viewModel.GetCategoryItems();
             DataContext = viewModel;
         }

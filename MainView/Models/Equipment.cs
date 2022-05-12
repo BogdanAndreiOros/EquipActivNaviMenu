@@ -8,7 +8,7 @@ namespace MainView.Models
         WaterSports,BallSports, Clothes,Accesories,Others
     }
 
-    public class Equipment : ICategory
+    public class Equipment
     {
         private string name;
         private Type type;
@@ -17,7 +17,7 @@ namespace MainView.Models
         private string createdBy;
         private DateOnly lastModifiedOn;
 
-        public UniqueId Id { get; set; }
+        public string Id { get; set; }
         public string Name { get => name; set => name = value; }
         public Type Type { get => type; set => type = value; }
         public int Quantity { get => quantity; set => quantity = value; }
@@ -31,6 +31,9 @@ namespace MainView.Models
             this.quantity = 0;
             this.createdBy = "new";
             this.lastModifiedOn = DateOnly.MinValue;
+            this.name = "new entry";
+            this.type = Type.Accesories;
+            this.Id = Guid.NewGuid().ToString();
         }
     }
 }

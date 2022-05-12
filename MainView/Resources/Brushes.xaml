@@ -3,6 +3,6 @@
 
     <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="#bce5e2"/>
     <SolidColorBrush x:Key="HeaderForegroundBrush" Color="Black"/>
-    <SolidColorBrush x:Key="CategoryViewBackgroundBrush" Color="#00688b"/>
+    <SolidColorBrush x:Key="CategoryViewBackgroundBrush" Color="#34a8eb"/>
 
 </ResourceDictionary>

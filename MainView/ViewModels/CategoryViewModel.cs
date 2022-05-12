@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using MainView.Commands;
 using System.Text;
 using System.Windows;
+using System.Xml;
+using MainView.UILogic;
 
 namespace MainView.ViewModels
 {
@@ -13,66 +15,51 @@ namespace MainView.ViewModels
     {
 
         public CategorySelectorViewModel selectorViewModel { get; }
-        private readonly IDataProvider categoryDataProvider;
+
+        private readonly IDataProvider<Equipment> equipmentDataProvider;
+        private readonly IDataProvider<Activity> activityDataProvider;
         public DelegateCommand AddCommand { get; }
 
 
         public string BoxText { get; set; } = new string("this is the initial text");
-        public ObservableCollection<ICategory> CategoryItems { get; set; } = new();
-        public IEnumerable<ICategory> MockCategoryItems { get; set; } = new List<Equipment>
-            {
-                 new Equipment {LastModifiedOn = new System.DateOnly(2022,10,4), CreatedBy = "Johnny", CreatedOn = new System.DateOnly(2022,1,1),
-                               Id = new System.Xml.UniqueId(), Name = "Paddle", Quantity = 52, Type = Type.WaterSports },
-
-                 new Equipment {LastModifiedOn = new System.DateOnly(2015,12,11), CreatedBy = "Bobby", CreatedOn = new System.DateOnly(2012,6,6),
-                               Id = new System.Xml.UniqueId(), Name = "Football", Quantity = 168, Type = Type.BallSports },
-
-                 new Equipment {LastModifiedOn = new System.DateOnly(2022,5,15), CreatedBy = "Charlotte", CreatedOn = new System.DateOnly(2021,4,18),
-                               Id = new System.Xml.UniqueId(), Name = "FitBand", Quantity = 52, Type = Type.Accesories },
-
-                 new Equipment {LastModifiedOn = new System.DateOnly(2010,6,5), CreatedBy = "Nancy", CreatedOn = new System.DateOnly(2005,10,9),
-                               Id = new System.Xml.UniqueId(), Name = "Protein Bar", Quantity = 52, Type = Type.Others },
-
-                 new Equipment {LastModifiedOn = new System.DateOnly(2020,11,23), CreatedBy = "Sarah", CreatedOn = new System.DateOnly(2020,11,22),
-                               Id = new System.Xml.UniqueId(), Name = "Tennis Shirt", Quantity = 52, Type = Type.Clothes },
-
-                 new Equipment {LastModifiedOn = new System.DateOnly(2022,1,25), CreatedBy = "Johnny", CreatedOn = new System.DateOnly(2009,2,26),
-                               Id = new System.Xml.UniqueId(), Name = "Basketball", Quantity = 52, Type = Type.BallSports }
-            };
-
-        public CategoryViewModel(IDataProvider dataProvider)
+        public ObservableCollection<Equipment> EquipmentItems { get; set; } = new();
+        public ObservableCollection<Activity> ActivityItems { get; set; } = new();  
+ 
+        public CategoryViewModel(IDataProvider<Activity> ActivitydataProvider, IDataProvider<Equipment> EquipmentDataProvider)
         {
             selectorViewModel = new CategorySelectorViewModel();
-            categoryDataProvider = dataProvider;
+            equipmentDataProvider = EquipmentDataProvider;
+            activityDataProvider = ActivitydataProvider;
 
             AddCommand = new DelegateCommand(Add);
         }
+
         public override void GetCategoryItems()
         {
+            if (EquipmentItems.Any() && ActivityItems.Any())
+               return;
 
-            //if (CategoryItems.Any())
-              //  return;
+            var EquipItems = equipmentDataProvider.GetMockData();
+            var ActivItems = activityDataProvider.GetMockData();
 
-            var items = categoryDataProvider.GetMockData();
-
-            if (items is not null)
-                foreach (var item in items)
-                    CategoryItems.Add(item);
+            if (EquipItems is not null && ActivItems is not null)
+            {
+                foreach (var item in EquipItems)
+                    EquipmentItems.Add(item);
+                foreach (var item in ActivItems)
+                    ActivityItems.Add(item);
+            }
+            
         }
 
         private void Add(object? parameter)
         {
-            BoxText = "Updated in the command";
-            MessageBox.Show("Command Works");
-            MessageBox.Show(BoxText);
+            //MessageBox.Show("Command Works");
+            //MessageBox.Show(BoxText);
 
-            /* var item = parameter as ICategory;
-             CategoryItems.Add(item);*/
-           /* MockCategoryItems = MockCategoryItems.Append(new Equipment());
-            MockCategoryItems = MockCategoryItems.Append(new Equipment());
-            MockCategoryItems = MockCategoryItems.Append(new Equipment());
-            MockCategoryItems = MockCategoryItems.Append(new Equipment());*/
+            var equipment = new Equipment();
 
+            EquipmentItems.Add(equipment);         
         }
     }
 }

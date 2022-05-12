@@ -20,19 +20,14 @@
     </Window.Resources>
 
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
 
         <controls:HeaderControl Grid.Row="0" Grid.ColumnSpan="2"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
             <view:CategorySelectorView />
             <view:CategoryView/>
         </StackPanel>

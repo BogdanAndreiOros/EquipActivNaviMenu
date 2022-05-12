@@ -7,18 +7,42 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Background="{StaticResource CategoryViewBackgroundBrush}">
+    <Grid Background="{StaticResource CategoryViewBackgroundBrush}" HorizontalAlignment="Stretch">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="80*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.01*"/>
         </Grid.RowDefinitions>
 
         <Button Grid.Row="0" Content="Add new entry" Command="{Binding AddCommand}"
                 Height="20" Width="90" HorizontalAlignment="Right" Margin="0 0 10 0"/>
 
-        <DataGrid Grid.Row="1" ItemsSource="{Binding MockCategoryItems, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+        <DataGrid CanUserAddRows="False" AlternationCount="2" HorizontalAlignment="Stretch" MaxColumnWidth="100"
+                  Grid.Row="{Binding selectorViewModel.currentTable.EquipmentGridIndex}" ItemsSource="{Binding EquipmentItems, UpdateSourceTrigger=PropertyChanged}"  
+                  AlternatingRowBackground="{StaticResource CategoryViewBackgroundBrush}" />
+      
         <TextBox Grid.Row="0" Width="100" Text="{Binding BoxText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+        <DataGrid  CanUserAddRows="False" AlternationCount="2" HorizontalAlignment="Stretch"
+                   Grid.Row="{Binding selectorViewModel.currentTable.ActivityGridIndex}" ItemsSource="{Binding ActivityItems, UpdateSourceTrigger=PropertyChanged}"  
+                   AlternatingRowBackground="{StaticResource CategoryViewBackgroundBrush}"/>
+
+        <!--<StackPanel Width="200" Height="200" Grid.Row="1" Visibility="Collapsed">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Name: "/>
+                <TextBox HorizontalAlignment="Stretch"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Name: "/>
+                <TextBox/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Name: "/>
+                <TextBox/>
+            </StackPanel>
+        </StackPanel>-->
     </Grid>
     
 </UserControl>

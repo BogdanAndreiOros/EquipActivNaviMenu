@@ -14,9 +14,9 @@
             <ColumnDefinition Width="600*"/>
         </Grid.ColumnDefinitions>
         
-        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Left" >
+        <StackPanel Grid.Column="2" Orientation="Horizontal"  >
             <Image Margin="0 0 20 0" Source="/Images/HeaderImage.png" Width="90" />
-            <TextBlock FontSize="25" Foreground="{StaticResource HeaderForegroundBrush}" VerticalAlignment="Center" 
+            <TextBlock FontSize="25" Foreground="{StaticResource HeaderForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"
                        Text="Equipment and Activities Navigation" FontWeight="Heavy"/>
         </StackPanel>
         

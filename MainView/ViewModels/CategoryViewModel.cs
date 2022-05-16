@@ -18,23 +18,26 @@ namespace MainView.ViewModels
 
         private readonly IDataProvider<Equipment> equipmentDataProvider;
         private readonly IDataProvider<Activity> activityDataProvider;
-        public DelegateCommand AddCommand { get; }
 
 
         public string BoxText { get; set; } = new string("this is the initial text");
+
         public ObservableCollection<Equipment> EquipmentItems { get; set; } = new();
         public ObservableCollection<Activity> ActivityItems { get; set; } = new();  
+
+        public DelegateCommand AddCommand { get; }
+        public DelegateCommand NavigateToHomeViewCommand { get; }
  
         public CategoryViewModel(IDataProvider<Activity> ActivitydataProvider, IDataProvider<Equipment> EquipmentDataProvider)
         {
             selectorViewModel = new CategorySelectorViewModel();
             equipmentDataProvider = EquipmentDataProvider;
             activityDataProvider = ActivitydataProvider;
-
+            GetCategoryItems();
             AddCommand = new DelegateCommand(Add);
         }
 
-        public override void GetCategoryItems()
+        public void GetCategoryItems()
         {
             if (EquipmentItems.Any() && ActivityItems.Any())
                return;

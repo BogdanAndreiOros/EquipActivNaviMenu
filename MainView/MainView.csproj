@@ -8,9 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Poppins-Regular.ttf" />
     <None Remove="Images\ActivitySelectorViewIcon.png" />
     <None Remove="Images\EquipmentSelectorIcon.jpg" />
     <None Remove="Images\HeaderImage.png" />
+    <None Remove="Images\MainViewIcon.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,9 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\Poppins-Regular.ttf" />
     <Resource Include="Images\ActivitySelectorViewIcon.png" />
     <Resource Include="Images\EquipmentSelectorIcon.jpg" />
     <Resource Include="Images\HeaderImage.png" />
+    <Resource Include="Images\MainViewIcon.jpg" />
   </ItemGroup>
 
 </Project>

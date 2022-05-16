@@ -6,24 +6,32 @@ namespace MainView.Commands
 {
     public class DelegateCommand : ICommand
     {
-        private readonly Action<object?> _execute;
-        private readonly Func<object, bool>? _canExecute;
 
-        public event EventHandler? CanExecuteChanged;
+        private readonly Action<object?> execute;
+        private readonly Func<object, bool>? canExecute;
 
-        public bool CanExecute(object? parameter) => true;
-        
-
-        public void Execute(object? parameter)
-        {
-
-            _execute.Invoke(parameter);
-        }
-
-        public DelegateCommand(Action<object?> execute)
+        public DelegateCommand(Action<object?> execute, Func<object,bool> canExecute = null)
         {
             ArgumentNullException.ThrowIfNull(execute);
-            _execute = execute;
+            this.execute = execute;
+            this.canExecute = canExecute;
         }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public bool CanExecute(object? parameter)
+        {
+            return canExecute == null || canExecute(parameter);
+        }
+
+        public void Execute(object? parameter)
+        { 
+            execute.Invoke(parameter);
+        }
+
     }
 }

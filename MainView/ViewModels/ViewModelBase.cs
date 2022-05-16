@@ -6,6 +6,5 @@ namespace MainView.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public abstract void GetCategoryItems();
     }
 }

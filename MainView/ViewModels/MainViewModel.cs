@@ -1,7 +1,6 @@
 ﻿using MainView.Commands;
 using MainView.Core;
 using MainView.DataProviders;
-using MainView.UILogic;
 
 namespace MainView.ViewModels
 {
@@ -32,15 +31,21 @@ namespace MainView.ViewModels
         public DelegateCommand ToCategoryViewCommand { get; }
 
         #endregion
+
+        #region Constructors
+
         public MainViewModel()
         {
             _homeViewModel = new HomeViewModel();
-            _categoryViewModel = new CategoryViewModel(new ActivityDataProvider(), new EquipmentDataProvider());
+            _categoryViewModel = new CategoryViewModel(new ActivityDataProvider(), 
+                                                       new EquipmentDataProvider());
 
             CurrentViewModel = _homeViewModel;
 
             ToHomeViewCommand = new DelegateCommand(o => { CurrentViewModel = _homeViewModel; });
             ToCategoryViewCommand = new DelegateCommand(o => { CurrentViewModel = _categoryViewModel; }); 
         }
+
+        #endregion
     }
 }

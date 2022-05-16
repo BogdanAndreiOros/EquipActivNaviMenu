@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MainView"
-        xmlns:controls="clr-namespace:MainView.Controls"
         xmlns:view ="clr-namespace:MainView.Views"
         xmlns:viewModel="clr-namespace:MainView.ViewModels"
         mc:Ignorable="d"
@@ -28,6 +27,7 @@
                 <view:HomeView/>
             </DataTemplate>
         </Window.Resources>
+    
     <Grid>
 
         <!--<Grid>
@@ -42,65 +42,42 @@
 
                 <view:CategoryView/>
             </StackPanel>
-        </Grid>-->
-
-        
-        
-        
+        </Grid>-->      
+          
         <Border Background="#05386B" CornerRadius="15">
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="210"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="75"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                              
-            
-            <TextBlock Text="App Navigation" 
+                
+                <TextBlock Text="Inventory Manager" 
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
                        Foreground="White" 
-                       FontSize="22"
+                       FontSize="20" Grid.ColumnSpan="2"
                        FontFamily="/Fonts/#Poppins"/>
 
-
-
-                <StackPanel Grid.Row="1" Background="#379683">
-                    <RadioButton Content="Home" Height="50" IsChecked="True" Command="{Binding ToHomeViewCommand}"
-                                 Foreground="White" FontSize="14" 
-                                 Style="{StaticResource MainMenuCategorySelectorTheme}"/>
-                    <RadioButton Content="Activities" Height="50" Command="{Binding ToCategoryViewCommand}"
-                                 Foreground="White" FontSize="14" 
-                                 Style="{StaticResource MainMenuCategorySelectorTheme}"/>
-                    <RadioButton Content="Equipment" Height="50" Command="{Binding ToCategoryViewCommand}"
-                                 Foreground="White" FontSize="14" 
-                                 Style="{StaticResource MainMenuCategorySelectorTheme}"/>
-                </StackPanel>
-
-                <TextBox Width="250" Height="40" Margin="5" Grid.Column="1" 
-                         Style="{StaticResource MainViewTextBox}"
-                         VerticalContentAlignment="Center" HorizontalAlignment="Left">
-                </TextBox>
+                <Image Source="/Images/ActivitySelectorViewIcon.png" Margin="0 0 65 0"/>
+                <view:CategorySelectorView Grid.Row="1"/>
 
                 <ContentControl Grid.Row="1" Grid.Column="1" Margin="10" 
                                 Content="{Binding CurrentViewModel}"/>
 
                 <Button Background="Transparent" Foreground="White" 
-                        HorizontalAlignment="Right" 
-                        Width="20"
-                        VerticalAlignment="Top" Click="Button_Click"
-                        Grid.Column="1" Margin="10 5 10 10" FontSize="20" BorderThickness="0">x</Button>
+                        HorizontalAlignment="Right" FontSize="20" Grid.Column="1"
+                        Width="20" BorderThickness="0" Margin="10 5 10 10" 
+                        VerticalAlignment="Top" Click="Button_Click" Content="X"/>
             </Grid>
 
         </Border>
-        
-        
-        
+              
     </Grid>
 
 </Window>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml;
 
 namespace MainView.Models
 {
@@ -21,8 +20,8 @@ namespace MainView.Models
         public string Name { get => name; set => name = value; }
         public Type Type { get => type; set => type = value; }
         public int Quantity { get => quantity; set => quantity = value; }
-        public DateOnly CreatedOn { get => createdOn; set => createdOn = value; }
         public string CreatedBy { get => createdBy; set => createdBy = value; }
+        public DateOnly CreatedOn { get => createdOn; set => createdOn = value; }
         public DateOnly LastModifiedOn { get => lastModifiedOn; set => lastModifiedOn = value; }
 
         public Equipment()

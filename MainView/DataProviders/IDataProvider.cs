@@ -1,5 +1,4 @@
-﻿using MainView.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MainView.DataProviders
 {

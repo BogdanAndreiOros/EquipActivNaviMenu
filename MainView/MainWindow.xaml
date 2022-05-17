@@ -17,10 +17,13 @@
     </Window.DataContext>
     
         <Window.Resources>
-            <DataTemplate DataType="{x:Type viewModel:CategoryViewModel}">
-                <view:CategoryView/>
+            <DataTemplate DataType="{x:Type viewModel:ActivityViewModel}">
+                <view:ActivityView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModel:CategorySelectorViewModel}">
+             <DataTemplate DataType="{x:Type viewModel:EquipmentViewModel}">
+              <view:EquipmentView/>
+           </DataTemplate>
+           <DataTemplate DataType="{x:Type viewModel:CategorySelectorViewModel}">
                 <view:CategorySelectorView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
@@ -42,13 +45,13 @@
 
                 <view:CategoryView/>
             </StackPanel>
-        </Grid>-->      
-          
-        <Border Background="#05386B" CornerRadius="15">
+        </Grid>-->
 
+        <Border Background="#05386B" CornerRadius="15">
             <Grid>
+
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="210"/>
+                    <ColumnDefinition Width="160"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
@@ -56,15 +59,15 @@
                     <RowDefinition Height="75"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
+
                 <TextBlock Text="Inventory Manager" 
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
-                       Foreground="White" 
-                       FontSize="20" Grid.ColumnSpan="2"
+                       Foreground="White" FontWeight="Bold"
+                       FontSize="21" Grid.ColumnSpan="2"
                        FontFamily="/Fonts/#Poppins"/>
 
-                <Image Source="/Images/ActivitySelectorViewIcon.png" Margin="0 0 65 0"/>
+                <Image Source="/Images/ActivitySelectorViewIcon.png" Margin="0 0 12 0"/>
                 <view:CategorySelectorView Grid.Row="1"/>
 
                 <ContentControl Grid.Row="1" Grid.Column="1" Margin="10" 
@@ -75,7 +78,6 @@
                         Width="20" BorderThickness="0" Margin="10 5 10 10" 
                         VerticalAlignment="Top" Click="Button_Click" Content="X"/>
             </Grid>
-
         </Border>
               
     </Grid>

@@ -11,10 +11,10 @@
         <RadioButton Content="Home" Height="50" IsChecked="True" Command="{Binding ToHomeViewCommand}"
                                  Foreground="White" FontSize="14" 
                                  Style="{StaticResource MainMenuCategorySelectorTheme}"/>
-        <RadioButton Content="Activities" Height="50" Command="{Binding ToCategoryViewCommand}"
+        <RadioButton Content="Activities" Height="50" Command="{Binding ToActivityViewCommand}"
                                  Foreground="White" FontSize="14" 
                                  Style="{StaticResource MainMenuCategorySelectorTheme}"/>
-        <RadioButton Content="Equipment" Height="50" Command="{Binding ToCategoryViewCommand}"
+        <RadioButton Content="Equipment" Height="50" Command="{Binding ToEquipmentViewCommand}"
                                  Foreground="White" FontSize="14" 
                                  Style="{StaticResource MainMenuCategorySelectorTheme}"/>
     </StackPanel>

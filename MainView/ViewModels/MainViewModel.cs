@@ -1,6 +1,7 @@
 ﻿using MainView.Commands;
 using MainView.Core;
 using MainView.DataProviders;
+using System.Windows.Input;
 
 namespace MainView.ViewModels
 {
@@ -9,7 +10,8 @@ namespace MainView.ViewModels
         #region ViewModels
 
         public HomeViewModel _homeViewModel { get; }
-        public CategoryViewModel _categoryViewModel { get; }
+        public ActivityViewModel _activityViewModel { get; }
+        public EquipmentViewModel _equipmentViewModel { get; }
 
         private object _currentViewModel;
 
@@ -28,7 +30,8 @@ namespace MainView.ViewModels
         #region Commands
 
         public DelegateCommand ToHomeViewCommand { get; }
-        public DelegateCommand ToCategoryViewCommand { get; }
+        public DelegateCommand ToEquipmentViewCommand { get; }
+        public DelegateCommand ToActivityViewCommand { get; }
 
         #endregion
 
@@ -37,15 +40,18 @@ namespace MainView.ViewModels
         public MainViewModel()
         {
             _homeViewModel = new HomeViewModel();
-            _categoryViewModel = new CategoryViewModel(new ActivityDataProvider(), 
-                                                       new EquipmentDataProvider());
+
+            _activityViewModel = new ActivityViewModel(new ActivityDataProvider());
+
+            _equipmentViewModel = new EquipmentViewModel(new EquipmentDataProvider());
 
             CurrentViewModel = _homeViewModel;
 
             ToHomeViewCommand = new DelegateCommand(o => { CurrentViewModel = _homeViewModel; });
-            ToCategoryViewCommand = new DelegateCommand(o => { CurrentViewModel = _categoryViewModel; }); 
+            ToEquipmentViewCommand = new DelegateCommand(o => { CurrentViewModel = _equipmentViewModel; }); 
+            ToActivityViewCommand = new DelegateCommand(o => { CurrentViewModel = _activityViewModel; });
         }
 
-        #endregion
+        #endregion      
     }
 }

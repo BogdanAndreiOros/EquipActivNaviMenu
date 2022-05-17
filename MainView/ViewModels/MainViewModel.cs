@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace MainView.ViewModels
 {
-    class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
         #region ViewModels
 
@@ -29,29 +29,34 @@ namespace MainView.ViewModels
 
         #region Commands
 
-        public DelegateCommand ToHomeViewCommand { get; }
-        public DelegateCommand ToEquipmentViewCommand { get; }
-        public DelegateCommand ToActivityViewCommand { get; }
+        public DelegateCommand ToHomeViewCommand { get; private set; }
+        public DelegateCommand ToEquipmentViewCommand { get; private set; }
+        public DelegateCommand ToActivityViewCommand { get; private set; }
 
         #endregion
 
         #region Constructors
 
-        public MainViewModel()
+        public MainViewModel(HomeViewModel homeViewModel, ActivityViewModel activityViewModel, EquipmentViewModel equipmentViewModel)
         {
-            _homeViewModel = new HomeViewModel();
+            CurrentViewModel =  _homeViewModel = homeViewModel; 
 
-            _activityViewModel = new ActivityViewModel(new ActivityDataProvider());
+            _activityViewModel = activityViewModel;
 
-            _equipmentViewModel = new EquipmentViewModel(new EquipmentDataProvider());
+            _equipmentViewModel = equipmentViewModel;
 
-            CurrentViewModel = _homeViewModel;
-
-            ToHomeViewCommand = new DelegateCommand(o => { CurrentViewModel = _homeViewModel; });
-            ToEquipmentViewCommand = new DelegateCommand(o => { CurrentViewModel = _equipmentViewModel; }); 
-            ToActivityViewCommand = new DelegateCommand(o => { CurrentViewModel = _activityViewModel; });
+            SetUpDelegateCommands();
         }
 
-        #endregion      
+        #endregion
+
+        #region HelperMethods
+        public void SetUpDelegateCommands()
+        {
+            ToHomeViewCommand = new DelegateCommand(o => { CurrentViewModel = _homeViewModel; });
+            ToEquipmentViewCommand = new DelegateCommand(o => { CurrentViewModel = _equipmentViewModel; });
+            ToActivityViewCommand = new DelegateCommand(o => { CurrentViewModel = _activityViewModel; });
+        }
+        #endregion
     }
 }

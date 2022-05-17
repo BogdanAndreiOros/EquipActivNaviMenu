@@ -37,16 +37,15 @@ namespace MainView.ViewModels
         #region Helper Methods
         public void GetCategoryItems()
         {
-            if (ActivityItems.Any())
+            if (this.ActivityItems.Any())
                return;
           
-            var ActivItems = activityDataProvider.GetMockData();
+            var ActivityItems = activityDataProvider.GetMockData();
 
-            if (ActivItems is not null)
+            if (ActivityItems is not null)
             {
-               
-                foreach (var item in ActivItems)
-                    ActivityItems.Add(item);
+                foreach (var item in ActivityItems)
+                    this.ActivityItems.Add(item);
             }   
         }
         #endregion

@@ -12,11 +12,7 @@
         AllowsTransparency="True"
         WindowStyle="None">
 
-    <Window.DataContext>
-        <viewModel:MainViewModel/>
-    </Window.DataContext>
-    
-        <Window.Resources>
+    <Window.Resources>
             <DataTemplate DataType="{x:Type viewModel:ActivityViewModel}">
                 <view:ActivityView/>
             </DataTemplate>

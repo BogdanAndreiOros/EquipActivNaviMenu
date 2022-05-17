@@ -9,7 +9,7 @@
     <Grid Background="Transparent">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
                    Background="Transparent" FontWeight="DemiBold" Foreground="White" FontSize="17"> 
-           Welcome to the navigation home view for the Equipment and Activities Navigation
+           Welcome to the navigation home view for the Inventory Management Application
         </TextBlock>
     </Grid>
 </UserControl>

@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:MainView"
         mc:Ignorable="d"
         xmlns:viewModel ="clr-namespace:MainView.ViewModels"
-        Title="ActivityItemAdderWindow" Height="120" Width="240">
+        Title="ActivityItemAdderWindow" Height="120" Width="240"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None">
 
     <Border Background="#05386B" CornerRadius="15">
         <Grid>

@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MainView"
         mc:Ignorable="d"
-        Title="EquipmentItemAdderWindow" Height="180" Width="280">
+        Title="EquipmentItemAdderWindow" Height="150" Width="280"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None">
 
     <Border Background="#05386B" CornerRadius="15">
         <Grid>

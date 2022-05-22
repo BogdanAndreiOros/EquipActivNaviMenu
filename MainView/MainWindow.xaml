@@ -25,24 +25,9 @@
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
-        </Window.Resources>
-    
+    </Window.Resources>
+
     <Grid>
-
-        <!--<Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <controls:HeaderControl Grid.Row="0" />
-            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Stretch">
-                <view:CategorySelectorView />
-
-                <view:CategoryView/>
-            </StackPanel>
-        </Grid>-->
-
         <Border Background="#05386B" CornerRadius="15">
             <Grid>
 
@@ -75,7 +60,6 @@
                         VerticalAlignment="Top" Click="Button_Click" Content="X"/>
             </Grid>
         </Border>
-              
     </Grid>
 
 </Window>

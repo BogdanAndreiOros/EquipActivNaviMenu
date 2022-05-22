@@ -10,6 +10,9 @@ namespace MainView.Commands
         private readonly Action<object?> execute;
         private readonly Func<object, bool>? canExecute;
 
+        public DelegateCommand()
+        { }
+
         public DelegateCommand(Action<object?> execute, Func<object,bool> canExecute = null)
         {
             ArgumentNullException.ThrowIfNull(execute);

@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace MainView.ViewModels
 {
-    public  class EquipmentViewModel : ViewModelBase
+    public class EquipmentViewModel : ViewModelBase
     {
         #region Storage
         private readonly IDataProvider<Equipment> equipmentDataProvider;
@@ -25,11 +25,20 @@ namespace MainView.ViewModels
         #endregion
 
         #region Helper Methods
-        public void GetCategoryItems()
+        public override void Initialize()
+        {
+            if (isInitialized == false)
+            {
+                isInitialized = true;
+                GetCategoryItems();
+            }
+        }
+        public void GetCategoryItems() 
         {
             if (EquipmentItems.Any())
                 return;
-            var EquipItems = equipmentDataProvider.GetMockData(); 
+
+            var EquipItems = equipmentDataProvider?.GetMockData(); 
 
             if (EquipItems is not null)
             {
@@ -38,7 +47,7 @@ namespace MainView.ViewModels
             }
         }
 
-        public List<Models.Type> GetEquipmentTypes()
+        public List<Models.Type> GetEquipmentTypes() 
         {
             var equipmentTypes = new List<Models.Type>();
             foreach (Models.Type type in Enum.GetValues(typeof(Models.Type)))
@@ -51,10 +60,14 @@ namespace MainView.ViewModels
         #endregion
         #region Constructor
 
+        public EquipmentViewModel()
+        {
+
+        }
+
         public EquipmentViewModel(IDataProvider<Equipment> EquipmentDataProvider)
         {
             equipmentDataProvider = EquipmentDataProvider;
-            GetCategoryItems();
             AddCommand = new DelegateCommand(Add);
             ConfirmNewItemCommand = new DelegateCommand(ConfirmNewItem);
 
@@ -62,7 +75,7 @@ namespace MainView.ViewModels
         #endregion
 
         #region Command Methods
-        private void Add(object? parameter)
+        private void Add(object? parameter) 
         {       
             equipmentItemAdderWindow =  new EquipmentItemAdderWindow();
             equipmentItemAdderWindow.ConfirmationButton.Command = ConfirmNewItemCommand;
@@ -70,7 +83,7 @@ namespace MainView.ViewModels
             equipmentItemAdderWindow.TypeComboBox.ItemsSource = GetEquipmentTypes();
         }
 
-        private void ConfirmNewItem(object? parameter)
+        private void ConfirmNewItem(object? parameter) 
         {
             var equipment = new Equipment();
 
@@ -85,6 +98,7 @@ namespace MainView.ViewModels
             EquipmentItems.Add(equipment);
             equipmentItemAdderWindow.Close();
         }
+
         #endregion
     }
 }

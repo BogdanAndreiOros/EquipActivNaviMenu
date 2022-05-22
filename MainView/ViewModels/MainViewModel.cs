@@ -54,8 +54,17 @@ namespace MainView.ViewModels
         public void SetUpDelegateCommands()
         {
             ToHomeViewCommand = new DelegateCommand(o => { CurrentViewModel = _homeViewModel; });
-            ToEquipmentViewCommand = new DelegateCommand(o => { CurrentViewModel = _equipmentViewModel; });
-            ToActivityViewCommand = new DelegateCommand(o => { CurrentViewModel = _activityViewModel; });
+            ToEquipmentViewCommand = new DelegateCommand(o => 
+            {
+                _equipmentViewModel.Initialize();
+                CurrentViewModel =  _equipmentViewModel; 
+            });
+
+            ToActivityViewCommand = new DelegateCommand(o => 
+            {
+                _activityViewModel.Initialize();
+                CurrentViewModel = _activityViewModel; 
+            });
         }
         #endregion
     }

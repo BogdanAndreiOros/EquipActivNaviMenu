@@ -24,24 +24,38 @@ namespace MainView.ViewModels
         #endregion
 
         #region Constructors
+
+        public ActivityViewModel() 
+        {
+        }
+
         public ActivityViewModel(IDataProvider<Activity> ActivitydataProvider)
         {
            
             activityDataProvider = ActivitydataProvider;
-            GetCategoryItems();
             AddCommand = new DelegateCommand(Add);
             ConfirmNewItemCommand = new DelegateCommand(ConfirmNewItem);
         }
         #endregion
 
         #region Helper Methods
+
+        public override void Initialize()
+        {
+            if (isInitialized == false)
+            {
+                isInitialized = true;
+                GetCategoryItems();
+            }
+        }
+
         public void GetCategoryItems()
         {
             if (this.ActivityItems.Any())
                return;
           
-            var ActivityItems = activityDataProvider.GetMockData();
-
+            var ActivityItems = activityDataProvider?.GetMockData();
+           
             if (ActivityItems is not null)
             {
                 foreach (var item in ActivityItems)
@@ -51,14 +65,14 @@ namespace MainView.ViewModels
         #endregion
 
         #region Command Methods
-        private void Add(object? parameter)
+        private void Add(object? parameter) 
         {          
             activityItemAdderWindow = new ActivityItemAdderWindow();
             activityItemAdderWindow.Show();
             activityItemAdderWindow.ConfirmationButton.Command = ConfirmNewItemCommand;
         }
 
-        private void ConfirmNewItem(object? parameter)
+        private void ConfirmNewItem(object? parameter) 
         {
             var activity = new Activity();
 
@@ -71,6 +85,8 @@ namespace MainView.ViewModels
             ActivityItems.Add(activity);
             activityItemAdderWindow.Close();
         }
+
+
         #endregion
     }
 }
